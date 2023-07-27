@@ -103,8 +103,16 @@ public class Game {
     }
     
     private void exitGame() {
-        isRunning = false;
-        System.out.println("Exiting The IntelligentCraft Game. Goodbye!");
+        
+                    System.out.println("Are you sure you want to exit the game? (yes/no)");
+                    String confirmExit = scanner.nextLine().trim().toLowerCase();
+                    if (confirmExit.equals("yes")) {
+                        System.out.println("Thank you for playing the Crafting Game. Goodbye!");
+                        System.exit(0);
+                    } else {
+                        System.out.println("Resuming the game.");
+                    }
+                    
     }
     private void createCharacter() {
         Messages.message("--- Character Creation ---");
