@@ -1,0 +1,5 @@
+Level,1
+Points,380
+Resource,Stone,0
+Resource,Wood,0
+CraftedItem,Axe,4
