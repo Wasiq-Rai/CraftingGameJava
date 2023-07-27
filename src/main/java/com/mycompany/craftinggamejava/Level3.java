@@ -88,7 +88,15 @@ public class Level3 {
                     SaveGame.saveGame(player.getName(), player.getLevel(), player.getExperiencePoints(), player.getInventory().getResources(), player.getInventory().getCraftedItems());
                     break;
                 case 4:
-                    isGameRunning = false;
+                    System.out.println("Are you sure you want to exit the game? (yes/no)");
+                    String confirmExit = scanner.nextLine().trim().toLowerCase();
+                    if (confirmExit.equals("yes")) {
+                        System.out.println("Thank you for playing the Crafting Game. Goodbye!");
+                        isGameRunning=false;
+                        System.exit(0);
+                    } else {
+                        System.out.println("Resuming the game.");
+                    }
                     break;
                 default:
                      System.out.println("Invalid choice. Please try again.");

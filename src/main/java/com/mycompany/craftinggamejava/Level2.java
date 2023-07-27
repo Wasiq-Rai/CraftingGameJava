@@ -109,7 +109,14 @@ public class Level2 {
                     // Implement save game functionality
                     break;
                 case 5:
-                    // Implement exit game functionality
+                    System.out.println("Are you sure you want to exit the game? (yes/no)");
+                    String confirmExit = scanner.nextLine().trim().toLowerCase();
+                    if (confirmExit.equals("yes")) {
+                        System.out.println("Thank you for playing the Crafting Game. Goodbye!");
+                        System.exit(0);
+                    } else {
+                        System.out.println("Resuming the game.");
+                    }
                     break;
                 default:
                      System.out.println("Invalid choice. Please try again.");
