@@ -37,8 +37,9 @@ public class LevelingSystem {
                 level2.showMainMenu(); // Call the showMainMenu() method of Level2 class
                 break;
             case 3:
-                //Level3 level3 = new Level3(); // Create an instance of Level3 class
-                //level3.showMainMenu(); // Call the showMainMenu() method of Level3 class
+                Level3 level3 = new Level3(); // Create an instance of Level3 class
+                story.level3Story();
+                level3.showMainMenu(); // Call the showMainMenu() method of Level3 class
                 break;
             default:
                 System.out.println("Invalid level. Unable to show main menu.");

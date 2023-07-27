@@ -1,6 +1,6 @@
 Level,2
 Points,0
-Resource,Wood,13
+Resource,Wood,5
 Resource,Stone,1
+CraftedItem,Table,1
 CraftedItem,Chair,1
-CraftedItem,Table,2

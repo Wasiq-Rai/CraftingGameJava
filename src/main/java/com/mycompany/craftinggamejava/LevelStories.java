@@ -26,5 +26,13 @@ public class LevelStories {
          "10 glass from an aluminum shop, 15 cement from a factory,\n"+
          "and 5 paint from a store to begin your construction.");
     }
+
+
+    void level3Story(){
+        Messages.message("Welcome to Level 3 - Building the House"+
+         "You have gathered all the required resources and crafted items."+
+         "Now, it's time to build your dream house in the forest!"+
+         "Let's start the construction process.");
+    }
     
 }

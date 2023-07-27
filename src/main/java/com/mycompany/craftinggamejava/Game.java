@@ -137,12 +137,14 @@ public class Game {
 
 
     private void loadGame() {
-    showLoadingScreen();
+    
         
     loads = true;
     System.out.print("Enter your name: ");
     String playerName = scanner.nextLine();
     String fileName = playerName + ".txt";
+
+    showLoadingScreen();
 
     try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
         player.setName(playerName);
@@ -173,15 +175,17 @@ public class Game {
             if (line.startsWith("Resource,")) {
                 String[] values = line.split(",");
                 String resourceName = values[1];
-                if(resourceName.startsWith("W"))
-                woodFound=true;
-                else if(resourceName.startsWith("S"))
-                stoneFound=true;
                 int resourceQuantity = Integer.parseInt(values[2]);
 
-                // Update the game state with the restored resource information
-                // Assuming you have a method to addResource() in the Player class
+                if(resourceName.startsWith("W")){
+                woodFound=true;
+
+                }
+                else if(resourceName.startsWith("S")){
+                stoneFound=true;
+                }
                 player.getInventory().addResource(new Resource(resourceName,resourceQuantity));
+
             } else if (line.startsWith("CraftedItem,")) {
                 String[] values = line.split(",");
                 String craftedItemName = values[1];

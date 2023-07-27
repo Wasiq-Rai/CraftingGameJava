@@ -78,6 +78,14 @@ public class Inventory {
         }
         return 0;
     }
+    public int getCraftedItemQuantity(String craftedItemName) {
+        for (CraftedItem craftedItem : craftedItems) {
+            if (craftedItem.getName().equalsIgnoreCase(craftedItemName)) {
+                return craftedItem.getQuantity();
+            }
+        }
+        return 0;
+    }
 
     public boolean hasEnoughQuantity(Resource resource, int requiredQuantity) {
         return resource.getQuantity() >= requiredQuantity;

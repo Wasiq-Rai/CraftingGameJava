@@ -12,24 +12,26 @@ public class Level2 {
     private Resource glassResource ;
     private Resource  cementResource;
     private Resource paintResource ;
-    private CraftedItem tableItem;
-    private CraftedItem chairItem;
-    private CraftedItem floorItem;
-    private CraftedItem roofItem;
-    private CraftedItem almirahItem;
-    private CraftedItem wallsItem;
-    private CraftedItem windowsItem;
-    private boolean hasCraftedTable;
-    private boolean hasCraftedChair;
-    private boolean hasCraftedAlmirah;
-    private boolean hasCraftedFloor;
-    private boolean hasCraftedRoof;
-    private int windowsCrafted;
-    private int wallsCemented;
-    private int wallsPainted;
+     public static CraftedItem tableItem;
+     public static CraftedItem chairItem;
+     public static CraftedItem floorItem;
+     public static CraftedItem roofItem;
+     public static CraftedItem almirahItem;
+     public static CraftedItem wallsItem;
+     public static CraftedItem windowsItem;
+    public boolean hasCraftedTable;
+    public boolean hasCraftedChair;
+    public boolean hasCraftedAlmirah;
+    public boolean hasCraftedFloor;
+    public boolean hasCraftedRoof;
+    public int windowsCrafted;
+    public int wallsCemented;
+    public int wallsPainted;
 
 
     public Level2(){
+        
+
         this.scanner = new Scanner(System.in);
         this.hasCraftedTable = false;
         this.hasCraftedChair = false;
@@ -41,8 +43,14 @@ public class Level2 {
         this.wallsPainted = 0;
 
         // Initialize resources
+        if(!Game.loads){
         this.woodResource = Level1.woodResource;
         this.stoneResource   = Level1.stoneResource;
+        }else{
+        this.woodResource = player.getInventory().getResourceByName("Wood");
+        this.stoneResource   = player.getInventory().getResourceByName("Stone");
+        }
+        
         this.glassResource = new Resource("Glass", 0);
         this.cementResource = new Resource("Cement", 0);
         this.paintResource = new Resource("Paint", 0);
@@ -108,12 +116,18 @@ public class Level2 {
             }
         }
 
+        player.setLevel(3);
+        Game.level.setLevel(3);
+
          Messages.message("Congratulations! You have completed Level 2!");
+        Game.level.showMainMenu();
     }
     private boolean levelCompleted() {
         return hasCraftedTable && hasCraftedChair && hasCraftedAlmirah &&
                hasCraftedFloor && hasCraftedRoof &&
                windowsCrafted >= 5 && wallsCemented >= 5 && wallsPainted >= 5;
+
+        
     }
 
     private int getPlayerChoice() {
@@ -157,6 +171,7 @@ public class Level2 {
     }
     
     private void gatherWood() {
+        player.getInventory().addResource(woodResource);
         woodResource = player.getInventory().getResourceByName("Wood");
         int requiredWood = 20;
         int gatheredWood = woodResource.getQuantity();
@@ -169,6 +184,7 @@ public class Level2 {
     }
     
     private void gatherStone() {
+        player.getInventory().addResource(stoneResource);
         stoneResource = player.getInventory().getResourceByName("Stone");
         int requiredStone = 50;
         int gatheredStone = stoneResource.getQuantity();
@@ -272,7 +288,7 @@ public class Level2 {
         tableItem = player.getInventory().getCraftedItemByName("Table");
         int requiredWood = 6;
         int gatheredWood = player.getInventory().getResourceQuantity("Wood");
-        if (gatheredWood >= requiredWood ) {
+        if (gatheredWood >= requiredWood && tableItem.getQuantity() <1 ) {
             tableItem.addQuantity(1);
             woodResource.setQuantity(woodResource.getQuantity()-requiredWood);
             Messages.message("You crafted 1 Table.");

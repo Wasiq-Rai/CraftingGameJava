@@ -1,0 +1,11 @@
+Level,3
+Points,500
+Resource,Wood,5
+Resource,Stone,1
+CraftedItem,Table,1
+CraftedItem,Chair,2
+CraftedItem,Floor,1
+CraftedItem,Roof,1
+CraftedItem,Windows,5
+CraftedItem,Walls,5
+CraftedItem,Almirah,1
